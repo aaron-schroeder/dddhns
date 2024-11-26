@@ -40,7 +40,15 @@ class AbstractExtractRepository(abc.ABC):
 
 class AbstractExportRepository(abc.ABC):
     @abc.abstractmethod
+    def save(self, activity_data: ActivityData) -> None:
+        """Load the ActivityData objects into the repository"""
+        raise NotImplementedError
+
+    @abc.abstractmethod
     def save_all(self, *args: ActivityData) -> None:
         """Load the ActivityData objects into the repository"""
         raise NotImplementedError
 
+    @abc.abstractmethod
+    def exists(self, key) -> bool:
+        raise NotImplementedError
